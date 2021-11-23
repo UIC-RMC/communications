@@ -26,7 +26,7 @@ def recv_msg():
 def send_msg():
     while True:
         print("\n")
-        v = raw_input("Message: ")
+        v = raw_input()
         MESSAGE = str(v)
         sock.sendto(MESSAGE, (UDP_IP, UDP_Port))
 
