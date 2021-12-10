@@ -24,10 +24,11 @@ while True:
 
     # pygame.joystick.Joystick.get_axis
     #pick your axis here!!!
-    axis0 = joystick.get_axis(0)
-    axis1 = joystick.get_axis(1)
+    axis0 = round(joystick.get_axis(0), 2)
+    axis1 = round(joystick.get_axis(1), 2)
 
-    print("Axis {} value: {:>6.3f}".format(0, axis0))
+    print(axis0)
+    #print("Axis {} value: {:>6.3f}".format(0, axis0))
     #print("Axis {} value: {:>6.3f}".format(1, axis1))
     sleep(.02)
 
