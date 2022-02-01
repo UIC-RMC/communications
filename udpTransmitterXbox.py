@@ -7,6 +7,8 @@
 #https://www.youtube.com/results?search_query=python+threading+library
 #https://stackoverflow.com/questions/34939480/sending-udp-packet-upon-interupt
 
+#FOR FUTURE IMPROVEMENT: https://stackoverflow.com/questions/33913308/socket-module-how-to-send-integer
+
 #turn on sender then the reciever
 import socket
 import time
@@ -17,7 +19,8 @@ import zlib
 pygame.init()
 UDP_Port = 5005                                             #specifies unused port on network
 LOCAL_IP = '0.0.0.0'                                        #specifies IPv4 addresses on the local machine
-UDP_IP = '192.168.1.28'                                     #target IP address (RasPi)
+UDP_IP = '192.168.1.144'                                    #target IP address (RasPi)
+#IP OF OTHER PI 192.168.1.28!
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)     #permits sending of messages, SOCK_DGRAM = Socket type (UDP)
 sock.bind((LOCAL_IP, UDP_Port))                             #permits recieving of messages
@@ -63,6 +66,9 @@ def send_msg():
         if (abs(axisXprev-axisX) >= .02) or (abs(axisYprev-axisY) >= .02):
             msg1 = str(axisX) + ' X'
             msg2 = str(axisY) + ' Y'
+            
+            print(msg1)
+            print(msg2)
 
             sock.sendto(msg1, (UDP_IP, UDP_Port))
             sock.sendto(msg2, (UDP_IP, UDP_Port))
