@@ -37,14 +37,16 @@ class transmitter:
 
             #only send the message if we have a change in our controller input
             if (abs(axisXprev-axisX) >= .02) or (abs(axisYprev-axisY) >= .02):
-                msg1 = str(axisX) + ' X'
-                msg2 = str(axisY) + ' Y'
+                msg1 = str(axisX) + ' '
+                msg2 = str(axisY)
                 
-                print(msg1)
-                print(msg2)
+                #print(msg1)
+                #print(msg2)
+                msgTot = msg1+msg2
+                print(msgTot)
 
-                self.sock.sendto(msg1, (self.UDP_IP, self.UDP_Port))
-                self.sock.sendto(msg2, (self.UDP_IP, self.UDP_Port))
+                self.sock.sendto(msgTot, (self.UDP_IP, self.UDP_Port))
+                #self.sock.sendto(msg2, (self.UDP_IP, self.UDP_Port))
 
             #storing the comparison values (this is done regardless)
             axisXprev = axisX
