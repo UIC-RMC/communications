@@ -1,61 +1,32 @@
+#creator: Alex Domagala
+#Main Program that is run on the raspberryPi, responsible for recieiving control commands from control computer
+
 from udpModule import reciever
-from PyRoboteq import RoboteqHandler
-from PyRoboteq import roboteq_commands as cmds
+from commandModule import movementControl
 import threading
 import time
 
-controller = RoboteqHandler(debug_mode=True, exit_on_interrupt=False)
-connected = controller.connect("/dev/ttyACM0") # Insert your COM port (for windows) or /dev/tty{your_port} (Commonly /dev/ttyACM0) for linux.
-
 #Connection Parameters
-UDP_Port = 5005                                             #specifies unused port on network
-LOCAL_IP = '0.0.0.0'                                        #specifies IPv4 addresses on the local machine
-UDP_IP = '192.168.1.162'                                    #target IP address (external)
+UDP_Port = 5005                                     #specifies unused port on network
+LOCAL_IP = '0.0.0.0'                                #specifies IPv4 addresses on the local machine (raspberryPi)
+UDP_IP = '192.168.1.162'                            #target IP address (external Computer)
 
-recieve = reciever(UDP_Port, LOCAL_IP, UDP_IP)
-t = threading.Thread(target=recieve.recv_msg)              #specifies that the additional thread will handle recieving messages
-t.start()                                                  #start the additional thread
-
-t2 = threading.Thread(target=recieve.send_msg)
+#Instatiate modules and run necessary threads
+recieve = reciever(UDP_Port, LOCAL_IP, UDP_IP)      #instantiate reciever object
+move = movementControl()                            #instantiate movement object
+t = threading.Thread(target=recieve.recv_msg)       #thread will handle recieving of messages
+t.start()
+t2 = threading.Thread(target=recieve.send_msg)      #thread will handle sending of messages
 t2.start()
 
-def control(x,y):
-
-#motor control parameters: dual_motor_control(motor1, motor2)
-    if x<300 and x>-300 and y<300 and y>-300:
-        controller.dual_motor_control(0, 0)
-        print("Stop")
-
-    if y>=300 and y<=1000 and x>-300 and x<300:
-        controller.dual_motor_control(-200, 200)
-        print("forward/n")
-
-    elif y<=-300 and y>=-1000 and x>-300 and x<300:
-        controller.dual_motor_control(200, -200)
-        print("reverse/n")
-
-    elif x>=300 and x<=1000 and y>-300 and y<300:
-        controller.dual_motor_control(200, 200)
-        print("right/n")
-
-    elif x<=-300 and x>=-1000 and y>-300 and y<300:
-        controller.dual_motor_control(-200, -200)
-        print("left/n")
-    else:
-        controller.dual_motor_control(0, 0)
-        print("Stop")
-
+#Event handler for running robot
 while True:
-    a = (recieve.msg.split(' '))
-    #print(a)
-    try:
-        x = int(float(a[0]) * 1000)
-        y = -1 * int(float(a[1]) * 1000)
-        #print(str(x) + ' ' + str(y))
-        print(x)
-        #print(y)
-        control(x,y)
 
+    a = (recieve.msg.split(' '))                    #Recieve a message from reciever, split message into x, y components
+    try:
+        x = int(float(a[0]) * 1000)                 #Convert message to integer for Roboteq (xAxis)
+        y = -1 * int(float(a[1]) * 1000)            #Convert message to integer for Roboteq (yAxis)
+        move.control(x,y)
     except:
        pass
     time.sleep(.25)

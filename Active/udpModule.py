@@ -1,14 +1,11 @@
 #creator: Alex Domagala
+#Module responsible for handling control input collection and sending/recieving data via UDP
+#FUTURE: possibly move collection of joystick data to alternate module
 
 import socket
 import time
 import pygame
-pygame.init()
-
-UDP_Port = 5005                                             #specifies unused port on network
-LOCAL_IP = '0.0.0.0'                                        #specifies IPv4 addresses on the local machine
-UDP_IP = '192.168.1.144'                                    #target IP address (RasPi)
-#IP OF OTHER PI 192.168.1.28!
+pygame.init() #should this be moved to INIT below?
 
 class transmitter:
     def __init__(self, UDP_Port, LOCAL_IP, UDP_IP):
@@ -35,18 +32,14 @@ class transmitter:
             axisX = round(joystick.get_axis(0), 2)
             axisY = round(joystick.get_axis(1), 2)
 
-            #only send the message if we have a change in our controller input
+            #Only send the message if we have a change in our controller input
             if (abs(axisXprev-axisX) >= .02) or (abs(axisYprev-axisY) >= .02):
                 msg1 = str(axisX) + ' '
                 msg2 = str(axisY)
-                
-                #print(msg1)
-                #print(msg2)
                 msgTot = msg1+msg2
                 print(msgTot)
 
                 self.sock.sendto(msgTot, (self.UDP_IP, self.UDP_Port))
-                #self.sock.sendto(msg2, (self.UDP_IP, self.UDP_Port))
 
             #storing the comparison values (this is done regardless)
             axisXprev = axisX
