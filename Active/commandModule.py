@@ -1,7 +1,6 @@
 #creator: Alex Domagala
 #Module responsible for handling movement of the robot
 
-
 from PyRoboteq import RoboteqHandler
 from PyRoboteq import roboteq_commands as cmds
 
