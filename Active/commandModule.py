@@ -1,4 +1,4 @@
-#creator: Alex Domagala
+#creators: Jonathan Perthel, Alex Domagala
 #Module responsible for handling movement of the robot
 
 from PyRoboteq import RoboteqHandler
