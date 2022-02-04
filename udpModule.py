@@ -58,6 +58,7 @@ class reciever:
             self.UDP_Port = UDP_Port
             self.LOCAL_IP = LOCAL_IP
             self.UDP_IP = UDP_IP
+            self.msg = ''
             self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)                #permits sending of messages, SOCK_DGRAM = Socket type (UDP)
             self.sock.bind((self.LOCAL_IP, self.UDP_Port))                              #permits recieving of messages
             self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)                #permits sending of messages, SOCK_DGRAM = Socket type (UDP)
@@ -66,17 +67,11 @@ class reciever:
     def recv_msg(self):
         while True:
             msg, addr = self.sock.recvfrom(1024)
-            print(msg)
+            self.msg = msg.decode()
+            #print(msg)
 
     def send_msg(self):
         while True:
             v = input()
             MESSAGE = str(v)
             self.sock.sendto(MESSAGE, (self.UDP_IP, self.UDP_Port))
-
-
-
-
-#t = threading.Thread(target=recv_msg)                       #specifies that the additional thread will handle recieving messages
-#t.start()                                                   #start the additional thread
-#send_msg()                                                  #start the message sending system on the current thread

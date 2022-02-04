@@ -14,27 +14,32 @@ UDP_IP = '192.168.1.162'                                    #target IP address (
 
 recieve = reciever(UDP_Port, LOCAL_IP, UDP_IP)
 t = threading.Thread(target=recieve.recv_msg)              #specifies that the additional thread will handle recieving messages
-t.start()                                                   #start the additional thread
+t.start()                                                  #start the additional thread
 
 t2 = threading.Thread(target=recieve.send_msg)
 t2.start()
 
 def control(x,y):
 
+#motor control parameters: dual_motor_control(motor1, motor2)
     if x<300 and x>-300 and y<300 and y>-300:
         controller.dual_motor_control(0, 0)
         print("Stop")
+
     if y>=300 and y<=1000 and x>-300 and x<300:
-        controller.dual_motor_control(400, 400)
+        controller.dual_motor_control(-200, 200)
         print("forward/n")
+
     elif y<=-300 and y>=-1000 and x>-300 and x<300:
-        controller.dual_motor_control(400, 400)
+        controller.dual_motor_control(200, -200)
         print("reverse/n")
+
     elif x>=300 and x<=1000 and y>-300 and y<300:
-        controller.dual_motor_control(400, -400)
+        controller.dual_motor_control(200, 200)
         print("right/n")
+
     elif x<=-300 and x>=-1000 and y>-300 and y<300:
-        controller.dual_motor_control(-400, 400)
+        controller.dual_motor_control(-200, -200)
         print("left/n")
     else:
         controller.dual_motor_control(0, 0)
@@ -47,11 +52,9 @@ while True:
         x = int(float(a[0]) * 1000)
         y = -1 * int(float(a[1]) * 1000)
         #print(str(x) + ' ' + str(y))
-        #print(x)
+        print(x)
         #print(y)
         control(x,y)
-
-
 
     except:
        pass
