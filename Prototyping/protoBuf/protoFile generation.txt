@@ -1,0 +1,5 @@
+idea for later: create text file (.bat) with the commands listed for
+
+instructions:
+1. cd to directory with proto file
+2. protoc --python_out=. {filename.proto}
