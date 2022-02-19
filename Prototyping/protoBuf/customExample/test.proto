@@ -1,3 +1,5 @@
+//Youtube Guide: https://www.youtube.com/watch?v=46O73On0gyI&t=212s
+//Official Docs: https://developers.google.com/protocol-buffers/docs/proto3
 syntax = "proto3";
 
 message data{
