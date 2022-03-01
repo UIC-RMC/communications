@@ -1,9 +1,16 @@
+#https://www.youtube.com/watch?v=Lbfe3-v7yE0
 import socket
+import time
 
-HOST = '192.168.0.120'
+HOST = socket.gethostname()
 PORT = 5005
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((HOST, PORT))
+s.listen(5) #listen for communications
 
 while True:
-    txt = input('enter msg: ')
-    s.send(txt)
+    clientsocket, address = s.accept()
+    print(f'connection from {address}')
+    clientsocket.send(bytes('Hello World!','utf-8'))
+    time.sleep(2)
