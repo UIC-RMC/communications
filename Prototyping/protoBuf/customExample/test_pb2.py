@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntest.proto\"\x12\n\x04\x64\x61ta\x12\n\n\x02id\x18\x01 \x01(\x05\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntest.proto\"1\n\x04\x64\x61ta\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65\x63imal\x18\x03 \x01(\x02\x62\x06proto3')
 
 
 
@@ -30,5 +30,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _DATA._serialized_start=14
-  _DATA._serialized_end=32
+  _DATA._serialized_end=63
 # @@protoc_insertion_point(module_scope)

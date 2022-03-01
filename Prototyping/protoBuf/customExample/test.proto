@@ -5,6 +5,6 @@ syntax = "proto3";
 message data{
     //we need to label all the data pieces we want, # corresponds to serialization order
     int32 id = 1;
-    //string name = 2;
-    //float decimal = 3;
+    string name = 2;
+    float decimal = 3;
 }
