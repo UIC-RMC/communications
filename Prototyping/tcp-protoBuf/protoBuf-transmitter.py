@@ -2,7 +2,7 @@
 import socket
 import time
 
-HOST = socket.gethostname()
+HOST = '0.0.0.0'
 PORT = 5005
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -14,3 +14,4 @@ while True:
     print(f'connection from {address}')
     clientsocket.send(bytes('Hello World!','utf-8'))
     time.sleep(2)
+    print('active')
