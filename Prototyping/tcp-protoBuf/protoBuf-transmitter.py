@@ -2,7 +2,7 @@
 import socket
 import time
 
-HOST = '0.0.0.0'
+HOST = socket.gethostname()
 PORT = 5005
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
