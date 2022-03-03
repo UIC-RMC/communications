@@ -1,38 +1,57 @@
 
-'''#https://www.youtube.com/watch?v=Lbfe3-v7yE0
+#https://www.youtube.com/watch?v=Lbfe3-v7yE0
+#https://notenoughtech.com/raspberry-pi/rpi-socket-protocol/
+'''
 import socket
-import time
 
-HOST = socket.gethostname()
-PORT = 5005
+HOST = '' # Server IP or Hostname
+PORT = 12345 # Pick an open Port (1000+ recommended), must match the client sport
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+print('Socket created')
+
+#managing error exception
+try:
+	s.bind((HOST, PORT))
+	s.listen(5)
+	print('Socket awaiting messages')
+	(conn, addr) = s.accept()
+	print('Connected')
+except:
+        print('fail bind')
+
+# awaiting for message
+while True:
+	data = conn.recv(1024)
+	print('I sent a message back in response to: ' + data)
+	reply = ''
+	conn.close() # Close connections
+	'''
+
+import socket
+
+host = ''
+port = 61626
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((HOST, PORT))
-s.listen(5) #listen for communications
+s.bind((host, port))
 
+print(host, port)
+
+s.listen(1)
+conn, addr = s.accept()
+print('Connected by', addr)
 while True:
-    clientsocket, address = s.accept()
-    print(f'connection from {address}')
-    clientsocket.send(bytes('Hello World!','utf-8'))
-    time.sleep(2)
-    print('active')
-'''
+    try:
+        data = conn.recv(1024)
 
-# echo-server.py
+        if not data: break
 
-import socket
+        print("Client says:")
+        print(data)
+        conn.sendall(b"Server says: hi")
 
-HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
-PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
+    except socket.error:
+        print("Error Occured")
+        break
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind((HOST, PORT))
-    s.listen()
-    conn, addr = s.accept()
-    with conn:
-        print(f"Connected by {addr}")
-        while True:
-            data = conn.recv(1024)
-            if not data:
-                break
-            conn.sendall(data)
+conn.close()
