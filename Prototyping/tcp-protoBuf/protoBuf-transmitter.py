@@ -1,6 +1,6 @@
 import socket
 import time
-import test_pb2 as pb2
+import test_pb2 as pb
 
 #the data we are going to send
 pbSend = pb.data()

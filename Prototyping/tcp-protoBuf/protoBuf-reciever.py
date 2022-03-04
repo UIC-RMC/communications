@@ -1,5 +1,5 @@
 import socket
-import test_pb2 as pb2
+import test_pb2 as pb
 
 #data recieving object
 pbRecieve = pb.data()
