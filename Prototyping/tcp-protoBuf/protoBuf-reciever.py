@@ -1,3 +1,5 @@
+#basic protobuffer example - complete
+
 import socket
 import test_pb2 as pb
 
