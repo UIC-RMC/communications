@@ -5,10 +5,13 @@ import time
 import test_pb2 as pb
 
 #the data we are going to send
+#first we create pbSend which is from the python protobuffer class
+#then we update the parameters we actually want to send
 pbSend = pb.data()
 pbSend.id = 123455
 pbSend.name = "test"
 pbSend.decimal = 2.34
+#finally we create "testData", this is in binary from serializing
 testData = pbSend.SerializeToString()
 
 host = ''

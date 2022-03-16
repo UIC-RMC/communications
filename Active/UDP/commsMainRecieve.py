@@ -26,7 +26,7 @@ while True:
     try:
         x = int(float(a[0]) * 1000)                 #Convert message to integer for Roboteq (xAxis)
         y = -1 * int(float(a[1]) * 1000)            #Convert message to integer for Roboteq (yAxis)
-        move.control(x,y)
+        move.move(x,y)
     except:
        pass
     time.sleep(.25)
