@@ -6,6 +6,9 @@
 #make class that can actually send the protobuffer data
 
 #https://stackoverflow.com/questions/40450556/how-to-know-which-protobuf-message-the-byte-array-is/50291651#50291651
+#https://sureshjoshi.com/development/streaming-protocol-buffers
+#https://eli.thegreenplace.net/2011/08/02/length-prefix-framing-for-protocol-buffers
+#encode multiple messages
 
 
 import socket
