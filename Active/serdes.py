@@ -47,12 +47,12 @@ class deserializer():
     def decode(self, msg):
         self.wrapMsgDecode.ParseFromString(msg)
 
-        if (self.wrapMsgDecode.HasField('Movment')):
+        if (self.wrapMsgDecode.HasField('movement')):
             print('Movement Msg Recieved')
             print(self.wrapMsgDecode.movement.mtr_spd)
             print(self.wrapMsgDecode.movement.mtr_ang)
 
-        if (self.wrapMsgDecode.HasField('Mining')):
+        if (self.wrapMsgDecode.HasField('mining')):
             print('Mining Msg Recieved')
-        if (self.wrapMsgDecode.HasField('Dumping')):
+        if (self.wrapMsgDecode.HasField('dumping')):
             print('Dumping Msg Recieved')
