@@ -14,34 +14,34 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tcmd.proto\",\n\x08movement\x12\x0f\n\x07mtr_spd\x18\x01 \x01(\r\x12\x0f\n\x07mtr_ang\x18\x02 \x01(\r\"=\n\x06mining\x12\x12\n\nmtr_mining\x18\x01 \x01(\x08\x12\x0e\n\x06\x65xtend\x18\x02 \x01(\x08\x12\x0f\n\x07retract\x18\x03 \x01(\x08\"*\n\x07\x64umping\x12\x0e\n\x06\x65xtend\x18\x01 \x01(\x08\x12\x0f\n\x07retract\x18\x02 \x01(\x08\"t\n\x0eWrapperMessage\x12\x13\n\x0b\x63ommonField\x18\x01 \x01(\r\x12\x17\n\x02m1\x18\x02 \x01(\x0b\x32\t.movementH\x00\x12\x15\n\x02m2\x18\x03 \x01(\x0b\x32\x07.miningH\x00\x12\x16\n\x02m3\x18\x04 \x01(\x0b\x32\x08.dumpingH\x00\x42\x05\n\x03msgb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tcmd.proto\",\n\x08Movement\x12\x0f\n\x07mtr_spd\x18\x01 \x01(\r\x12\x0f\n\x07mtr_ang\x18\x02 \x01(\r\"=\n\x06Mining\x12\x12\n\nmtr_mining\x18\x01 \x01(\x08\x12\x0e\n\x06\x65xtend\x18\x02 \x01(\x08\x12\x0f\n\x07retract\x18\x03 \x01(\x08\"*\n\x07\x44umping\x12\x0e\n\x06\x65xtend\x18\x01 \x01(\x08\x12\x0f\n\x07retract\x18\x02 \x01(\x08\"n\n\x0eWrapperMessage\x12\x1d\n\x08movement\x18\x02 \x01(\x0b\x32\t.MovementH\x00\x12\x19\n\x06mining\x18\x03 \x01(\x0b\x32\x07.MiningH\x00\x12\x1b\n\x07\x64umping\x18\x04 \x01(\x0b\x32\x08.DumpingH\x00\x42\x05\n\x03msgb\x06proto3')
 
 
 
-_MOVEMENT = DESCRIPTOR.message_types_by_name['movement']
-_MINING = DESCRIPTOR.message_types_by_name['mining']
-_DUMPING = DESCRIPTOR.message_types_by_name['dumping']
+_MOVEMENT = DESCRIPTOR.message_types_by_name['Movement']
+_MINING = DESCRIPTOR.message_types_by_name['Mining']
+_DUMPING = DESCRIPTOR.message_types_by_name['Dumping']
 _WRAPPERMESSAGE = DESCRIPTOR.message_types_by_name['WrapperMessage']
-movement = _reflection.GeneratedProtocolMessageType('movement', (_message.Message,), {
+Movement = _reflection.GeneratedProtocolMessageType('Movement', (_message.Message,), {
   'DESCRIPTOR' : _MOVEMENT,
   '__module__' : 'cmd_pb2'
-  # @@protoc_insertion_point(class_scope:movement)
+  # @@protoc_insertion_point(class_scope:Movement)
   })
-_sym_db.RegisterMessage(movement)
+_sym_db.RegisterMessage(Movement)
 
-mining = _reflection.GeneratedProtocolMessageType('mining', (_message.Message,), {
+Mining = _reflection.GeneratedProtocolMessageType('Mining', (_message.Message,), {
   'DESCRIPTOR' : _MINING,
   '__module__' : 'cmd_pb2'
-  # @@protoc_insertion_point(class_scope:mining)
+  # @@protoc_insertion_point(class_scope:Mining)
   })
-_sym_db.RegisterMessage(mining)
+_sym_db.RegisterMessage(Mining)
 
-dumping = _reflection.GeneratedProtocolMessageType('dumping', (_message.Message,), {
+Dumping = _reflection.GeneratedProtocolMessageType('Dumping', (_message.Message,), {
   'DESCRIPTOR' : _DUMPING,
   '__module__' : 'cmd_pb2'
-  # @@protoc_insertion_point(class_scope:dumping)
+  # @@protoc_insertion_point(class_scope:Dumping)
   })
-_sym_db.RegisterMessage(dumping)
+_sym_db.RegisterMessage(Dumping)
 
 WrapperMessage = _reflection.GeneratedProtocolMessageType('WrapperMessage', (_message.Message,), {
   'DESCRIPTOR' : _WRAPPERMESSAGE,
@@ -60,5 +60,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _DUMPING._serialized_start=122
   _DUMPING._serialized_end=164
   _WRAPPERMESSAGE._serialized_start=166
-  _WRAPPERMESSAGE._serialized_end=282
+  _WRAPPERMESSAGE._serialized_end=276
 # @@protoc_insertion_point(module_scope)

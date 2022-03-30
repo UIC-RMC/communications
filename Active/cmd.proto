@@ -1,27 +1,26 @@
 syntax = "proto3";
 
-message movement{
+message Movement{
     uint32 mtr_spd = 1;         // motor speed state
     uint32 mtr_ang = 2;         //motor angle state
 }
 
-message mining{
+message Mining{
     bool mtr_mining = 1;        //activate mining motor
     bool extend = 2;            //extend mining actuators
     bool retract = 3;           //retract mining actuators
 }
 
-message dumping{
+message Dumping{
     bool extend = 1;            //extend dumping actuators
     bool retract = 2;           //retract dumping actuators
 }
 
 //we wrap each message with an identifying int
 message WrapperMessage{
-    uint32 commonField = 1;
     oneof msg{
-        movement m1 = 2;
-        mining m2 = 3;
-        dumping m3 = 4;
+        Movement movement = 2;
+        Mining mining = 3;
+        Dumping dumping = 4;
     }
 }
