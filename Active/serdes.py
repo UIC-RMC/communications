@@ -25,8 +25,7 @@ class serializer:
         self.wrapMsgEncode.movement.mtr_spd = mtr_spd
         self.wrapMsgEncode.movement.mtr_ang = mtr_ang
 
-    def updateDumping(self, mtr_mining, extend, retract):
-        self.wrapMsgEncode.dumping.mtr_mining = mtr_mining
+    def updateDumping(self, extend, retract):
         self.wrapMsgEncode.dumping.extend = extend
         self.wrapMsgEncode.dumping.retract = retract
 
