@@ -29,10 +29,11 @@ class serializer:
         self.wrapMsgEncode.dumping.extend = extend
         self.wrapMsgEncode.dumping.retract = retract
 
-    def updateMining(self, mtr_mining, extend, retract):
+    def updateMining(self, mtr_mining, extend, retract, dig_spd):
         self.wrapMsgEncode.mining.mtr_mining = mtr_mining
         self.wrapMsgEncode.mining.extend = extend
         self.wrapMsgEncode.mining.retract = retract
+        self.wrapMsgEncode.mining.dig_spd = dig_spd
 
     #serialized the message, it can then be sent, idea we can also serialize inside each update method?
     def serialize(self):
@@ -53,5 +54,13 @@ class deserializer():
 
         if (self.wrapMsgDecode.HasField('mining')):
             print('Mining Msg Recieved')
+            print(self.wrapMsgDecode.mining.mtr_mining)
+            print(self.wrapMsgDecode.mining.extend)
+            print(self.wrapMsgDecode.mining.retract)
+            print(self.wrapMsgDecode.mining.dig_spd)
+            
+
         if (self.wrapMsgDecode.HasField('dumping')):
             print('Dumping Msg Recieved')
+            print(self.wrapMsgDecode.dumping.extend)
+            print(self.wrapMsgDecode.dumping.retract)

@@ -1,14 +1,15 @@
 syntax = "proto3";
 
 message Movement{
-    uint32 mtr_spd = 1;         // motor speed state
-    uint32 mtr_ang = 2;         //motor angle state
+    int32 mtr_spd = 1;         // motor speed state
+    int32 mtr_ang = 2;         //motor angle state
 }
 
 message Mining{
-    bool mtr_mining = 1;        //activate mining motor
-    bool extend = 2;            //extend mining actuators
-    bool retract = 3;           //retract mining actuators
+    bool mtr_mining = 1;            //activate mining motor
+    bool extend = 2;                //extend mining actuators
+    bool retract = 3;               //retract mining actuators
+    uint32 dig_spd = 4;             //adjust dig velocity
 }
 
 message Dumping{

@@ -36,22 +36,28 @@ class XboxController(object):
 
     def read(self): # return the buttons/triggers that you care about in this method
 
-        #movement
-        x = int(round(self.LeftJoystickX, 3) * 2000)
-        y = int(round(self.LeftJoystickY, 3) * 2000)
-        thresh = 500
+        #movement--COMPLETE (-500, 500) range
+        x = int(round(self.LeftJoystickX, 3) * 500)
+        y = int(round(self.LeftJoystickY, 3) * 500)
+        thresh = 100
         if abs(x) < thresh:
             x = 0
         if abs(y) < thresh:
             y = 0
 
-        #digging
+        #digging (return one or zero for actuator extension)
         digEnable = self.A
-        digAct = int(round(self.RightJoystickX, 3) * 2000)
-        digVel = int(round(self.RightJoystickY, 3) * 2000)
-        thresh = 500
-        if abs(digAct) < thresh:
+
+        digAct = self.RightJoystickX
+        if abs(digAct) > .25:
+            digAct = int(math.ceil(self.RightJoystickX))
+        else:
             digAct = 0
+
+        digVel = int((round(self.RightJoystickY, 3) * 2000))
+        if digVel < 0:
+            digVel = 0
+        thresh = 800
         if abs(digVel) < thresh:
             digVel = 0
 
@@ -116,5 +122,3 @@ if __name__ == '__main__':
     joy = XboxController()
     while True:
         print(joy.read())
-        a = joy.read()
-        #print(a[0])
