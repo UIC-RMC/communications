@@ -115,7 +115,3 @@ while True:
         ser.updateDumping(0, dumpDOWN)
         trans.send_msg(ser.serialize())
         IdumpDOWN = dumpDOWN
-    
-
-    #trans.send_msg(msg)
-    #sleep(2)
