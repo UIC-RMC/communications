@@ -49,18 +49,31 @@ class deserializer():
 
         if (self.wrapMsgDecode.HasField('movement')):
             print('Movement Msg Recieved')
-            print(self.wrapMsgDecode.movement.mtr_spd)
-            print(self.wrapMsgDecode.movement.mtr_ang)
+            #print(self.wrapMsgDecode.movement.mtr_spd)
+            #print(self.wrapMsgDecode.movement.mtr_ang)
+            spd = self.wrapMsgDecode.movement.mtr_spd
+            ang = self.wrapMsgDecode.movement.mtr_ang
+            move = ['move', spd, ang]
+            return move
 
         if (self.wrapMsgDecode.HasField('mining')):
             print('Mining Msg Recieved')
-            print(self.wrapMsgDecode.mining.mtr_mining)
-            print(self.wrapMsgDecode.mining.extend)
-            print(self.wrapMsgDecode.mining.retract)
-            print(self.wrapMsgDecode.mining.dig_spd)
-            
+            #print(self.wrapMsgDecode.mining.mtr_mining)
+            #print(self.wrapMsgDecode.mining.extend)
+            #print(self.wrapMsgDecode.mining.retract)
+            #print(self.wrapMsgDecode.mining.dig_spd)
+            enable = self.wrapMsgDecode.mining.mtr_mining
+            extend = self.wrapMsgDecode.mining.extend
+            retract = self.wrapMsgDecode.mining.retract
+            dig_spd = self.wrapMsgDecode.mining.dig_spd
+            mine = ['mine', enable, extend, retract, dig_spd]
+            return mine
 
         if (self.wrapMsgDecode.HasField('dumping')):
             print('Dumping Msg Recieved')
-            print(self.wrapMsgDecode.dumping.extend)
-            print(self.wrapMsgDecode.dumping.retract)
+            #print(self.wrapMsgDecode.dumping.extend)
+            #print(self.wrapMsgDecode.dumping.retract)
+            extend = self.wrapMsgDecode.dumping.extend
+            retract = self.wrapMsgDecode.dumping.retract
+            dump = ['dump', extend, retract]
+            return dump
