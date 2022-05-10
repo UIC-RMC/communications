@@ -5,7 +5,7 @@ import serdes
 from time import sleep
 
 HOST = ''
-PORT = 61626
+PORT = 2356
 
 #create controller object
 joy = xb.XboxController()
@@ -53,7 +53,7 @@ while True:
 
 
 #movement delta (delta can be used to adjust how much we want to sent) -- COMPLETE
-    delta = 50
+    delta = 25
     if (abs(x-Ix) > delta or abs(y-Iy) > delta):
         print('x: ' + str(x) + ', y: ' + str(y))
         ser.updateMovement(x,y)

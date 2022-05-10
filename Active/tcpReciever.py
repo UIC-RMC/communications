@@ -2,7 +2,7 @@ import serdes
 import tcpModule
 
 HOST = '192.168.1.162'
-PORT = 61626
+PORT = 2356
 
 #create serializer and reciever objects
 ser = serdes.deserializer()

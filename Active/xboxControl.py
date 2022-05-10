@@ -37,9 +37,9 @@ class XboxController(object):
     def read(self): # return the buttons/triggers that you care about in this method
 
         #movement--COMPLETE (-500, 500) range
-        x = int(round(self.LeftJoystickX, 3) * 500)
-        y = int(round(self.LeftJoystickY, 3) * 500)
-        thresh = 100
+        x = int(round(self.LeftJoystickX, 3) * 350)
+        y = int(round(self.LeftJoystickY, 3) * 350)
+        thresh = 10
         if abs(x) < thresh:
             x = 0
         if abs(y) < thresh:
