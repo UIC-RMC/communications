@@ -8,7 +8,7 @@ HOST = ''
 PORT = 2356
 
 #create controller object
-#joy = xb.XboxController()
+joy = xb.XboxController()
 
 #create serializer and transmitter objects
 ser = serdes.serializer()
