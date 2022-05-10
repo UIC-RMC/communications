@@ -1,11 +1,19 @@
 import serdes
 import tcpModule
+import RPi.GPIO as GPIO
 
 HOST = '192.168.1.162'
 PORT = 2356
 
+#monitor pi with GPIO
+LED_PIN = 17
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.output(LED_PIN, GPIO.HIGH)
+
 #create serializer and reciever objects
 ser = serdes.deserializer()
+print('Waiting to connect!')
 recv = tcpModule.reciever(HOST, PORT)
 
 #recieve messages
