@@ -38,12 +38,16 @@ class XboxController(object):
 
         #movement--COMPLETE (-500, 500) range
         x = int(round(self.LeftJoystickX, 3) * 350)
-        y = int(round(self.LeftJoystickY, 3) * 350)
+        y = int(round(self.LeftJoystickY, 3) * 64)
         thresh = 10
         if abs(x) < thresh:
             x = 0
         if abs(y) < thresh:
-            y = 0
+            y = 64
+        elif y < 0:
+            y = 64+y
+        elif y > 0:
+            y = 63+y
 
         #digging (return one or zero for actuator extension)
         digEnable = self.A
@@ -54,10 +58,14 @@ class XboxController(object):
         else:
             digAct = 0
 
-        digVel = int((round(self.RightJoystickY, 3) * 2000))
-        thresh = 800
+        digVel = int((round(self.RightJoystickY, 3) * 64))
+        thresh = 10
         if abs(digVel) < thresh:
-            digVel = 0
+            digVel = 64
+        elif digVel < 0:
+            digVel = 64+digVel
+        elif digVel > 0:
+            digVel = 63+digVel
 
         #dumping
         dumpUP = math.ceil(self.RightTrigger)
@@ -119,4 +127,6 @@ class XboxController(object):
 if __name__ == '__main__':
     joy = XboxController()
     while True:
-        print(joy.read())
+        #print(joy.read())
+        var = joy.read()
+        print(var[4])

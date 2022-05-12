@@ -53,7 +53,7 @@ while True:
 
 
 #movement delta (delta can be used to adjust how much we want to sent)
-    delta = 25
+    delta = 10
     if (abs(x-Ix) > delta or abs(y-Iy) > delta):
         print('x: ' + str(x) + ', y: ' + str(y))
         ser.updateMovement(x,y)
@@ -97,7 +97,7 @@ while True:
         IdigAct = digAct
 
     #digging motor velocity
-    delta = 100
+    delta = 10
     if (abs(digVel - IdigVel) > delta):
         print('digVel:' + str(digVel))
         ser.updateMining(TrackdigEnable, 0, 0, digVel)
