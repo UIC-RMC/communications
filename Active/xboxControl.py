@@ -55,8 +55,6 @@ class XboxController(object):
             digAct = 0
 
         digVel = int((round(self.RightJoystickY, 3) * 2000))
-        if digVel < 0:
-            digVel = 0
         thresh = 800
         if abs(digVel) < thresh:
             digVel = 0

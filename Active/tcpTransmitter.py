@@ -52,7 +52,7 @@ while True:
         continue
 
 
-#movement delta (delta can be used to adjust how much we want to sent) -- COMPLETE
+#movement delta (delta can be used to adjust how much we want to sent)
     delta = 25
     if (abs(x-Ix) > delta or abs(y-Iy) > delta):
         print('x: ' + str(x) + ', y: ' + str(y))
@@ -61,7 +61,7 @@ while True:
         Ix = x
         Iy = y
 
-#digging delta
+#digging deltas
 
     #digging enable/disable (actuators are not extending or retracting)
     if (digEnable == 1 and IdigEnable != 1):

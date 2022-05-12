@@ -9,7 +9,7 @@ message Mining{
     bool mtr_mining = 1;            //activate mining motor
     bool extend = 2;                //extend mining actuators
     bool retract = 3;               //retract mining actuators
-    uint32 dig_spd = 4;             //adjust dig velocity
+    int32 dig_spd = 4;              //adjust dig velocity
 }
 
 message Dumping{
