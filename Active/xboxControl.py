@@ -36,13 +36,14 @@ class XboxController(object):
 
     def read(self): # return the buttons/triggers that you care about in this method
 
-        #movement--COMPLETE (-500, 500) range
+        #movement range
         x = int(round(self.LeftJoystickX, 3) * 350)
-        y = int(round(self.LeftJoystickY, 3) * 64)
-        thresh = 30
-        if abs(x) < 30:
+        y = int(round(self.LeftJoystickY, 3) * 32)
+        threshX = 50
+        threshY = 15
+        if abs(x) < threshX:
             x = 0
-        if abs(y) < thresh:
+        if abs(y) < threshY:
             y = 64
         elif y < 0:
             y = 64+y
@@ -58,7 +59,7 @@ class XboxController(object):
         else:
             digAct = 0
 
-        digVel = int((round(self.RightJoystickY, 3) * 64))
+        digVel = int((round(self.RightJoystickY, 3) * 32))
         thresh = 10
         if abs(digVel) < thresh:
             digVel = 64
